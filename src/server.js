@@ -1,19 +1,12 @@
-// servidor
-const express = require('express')
-const server = express()
+const express = require('express');
+const server = express();
 
-const { 
-    pageLanding, 
-    pageStudy, 
-    pageGiveClasses, 
-    saveClasses 
-} = require('./pages')
+const { pageLanding, pageStudy, pageGiveClasses, saveClasses } = require('./pages')
 
-// configurar nunjucks (template engine)
-const nunjucks = require('nunjucks')
+const nunjucks = require('nunjucks');
 nunjucks.configure('src/views', {
-    express: server,
-    noCache: true,
+  express: server,
+  noCache: true,
 })
 
 server
@@ -22,5 +15,6 @@ server
 .get("/", pageLanding)
 .get("/study", pageStudy)
 .get("/give-classes", pageGiveClasses)
-.post("/save-classes", saveClasses )
-.listen(5500)
+.post("/save-classes", saveClasses)
+
+.listen(5500);

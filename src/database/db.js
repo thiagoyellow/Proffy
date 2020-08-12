@@ -2,10 +2,10 @@ const Database = require('sqlite-async')
 
 function execute(db) {
     // criar as tabelas do banco de dados
-    db.exec(`
+    return db.exec(`
         CREATE TABLE IF NOT EXISTS proffys (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
+            name TEXT, 
             avatar TEXT,
             whatsapp TEXT,
             bio TEXT
@@ -17,7 +17,7 @@ function execute(db) {
             cost TEXT,
             proffy_id INTEGER
         );
-
+        
         CREATE TABLE IF NOT EXISTS class_schedule (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             class_id INTEGER,
@@ -27,5 +27,6 @@ function execute(db) {
         );
     `)
 }
+
 
 module.exports = Database.open(__dirname + '/database.sqlite').then(execute)
